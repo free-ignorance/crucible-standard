@@ -1,56 +1,63 @@
 {
   "name": "crucible-standard",
-  "version": "0.0.1",
-  "description": "A news site for news",
-  "license": "ISC",
+  "description": "main site of organization crucible standard",
+  "keywords": [
+    "crucible"
+  ],
+  "version": "0.1.0",
+  "private": true,
   "contributors": [
     "Beau Bouchard <https://github.com/BeauBouchard>"
   ],
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/free-ignorance/crucible-standard"
+    "url": "git+https://github.com/free-ignorance/crucible-standard.git"
   },
   "bugs": {
     "url": "https://github.com/free-ignorance/crucible-standard/issues"
   },
   "homepage": "https://github.com/free-ignorance/crucible-standard#readme",
-  "eslintConfig": {
-    "extends": "airbnb"
+  "scripts": {
+    "dev": "npm run develop",
+    "develop": "gatsby develop",
+    "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md' 'bin/*.js'",
+    "build": "gatsby build",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
+    "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix *.js bin/*.js",
+    "postinstall": "node ./bin/hello.js",
+    "setup": "node ./bin/setup.js",
+    "start": "npm run develop",
+    "heroku-postbuild": "gatsby build",
+    "cleanup-repository": "rimraf bin contentful && yarn remove contentful-import chalk inquirer rimraf "
   },
   "dependencies": {
-    "gatsby": "2.8.5",
-    "gatsby-image": "2.1.2",
-    "gatsby-plugin-manifest": "2.1.1",
-    "gatsby-plugin-offline": "2.1.1",
-    "gatsby-plugin-react-helmet": "3.0.12",
-    "gatsby-plugin-sharp": "2.1.3",
-    "gatsby-source-filesystem": "2.0.38",
-    "gatsby-transformer-sharp": "2.1.21",
-    "prop-types": "15.7.2",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-helmet": "5.2.1"
+    "gatsby-image": "^2.0.38",
+    "gatsby-plugin-react-helmet": "^3.0.12",
+    "gatsby-plugin-sharp": "^2.0.34",
+    "gatsby-source-contentful": "^2.0.48",
+    "gatsby-transformer-remark": "^2.3.8",
+    "gatsby-transformer-sharp": "^2.1.18",
+    "lodash": "^4.17.11",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.0",
+    "sharp": "^0.22.0"
   },
   "devDependencies": {
-    "codecov": "3.5.0",
-    "eslint": "5.16.0",
-    "eslint-config-airbnb": "17.1.0",
-    "eslint-plugin-import": "2.17.2",
-    "eslint-plugin-jsx-a11y": "6.2.1",
-    "eslint-plugin-react": "7.13.0",
-    "nyc": "14.1.1",
-    "prettier": "1.18.1"
-  },
-  "main": "index.js",
-  "scripts": {
-    "build": "gatsby build",
-    "cover": "nyc npm test && nyc report --reporter=text-lcov > coverage.lcov && ./node_modules/.bin/codecov",
-    "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "node_modules/.bin/eslint --format codeframe './lib/**/*.js'",
-    "lint-fix": "node_modules/.bin/eslint --fix --format codeframe './lib/**/*.js'"
+    "babel-eslint": "^10.0.1",
+    "chalk": "^2.4.2",
+    "contentful-import": "^7.4.3",
+    "dotenv": "^8.0.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-react": "^7.12.4",
+    "gatsby": "^2.3.22",
+    "gh-pages": "^2.0.1",
+    "inquirer": "^6.2.2",
+    "prettier": "^1.17.0",
+    "rimraf": "^2.6.3",
+    "yargs-parser": "^13.0.0"
   }
 }
