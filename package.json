@@ -55,7 +55,7 @@
     "eslint-plugin-react": "^7.16.0",
     "gatsby": "^2.16.1",
     "gh-pages": "^2.1.1",
-    "inquirer": "^6.5.2",
+    "inquirer": "^7.0.1",
     "prettier": "^1.18.2",
     "rimraf": "^2.7.1",
     "yargs-parser": "^16.0.0"
